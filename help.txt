@@ -1,0 +1,14 @@
+python -m venv venv
+venv\scripts\activate
+pip install django
+pip install django-allauth
+python -m pip install django-filter
+
+python manage.py runserver
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+django-admin startproject (название)
+python manage.py startapp (название)

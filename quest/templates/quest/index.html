@@ -1,0 +1,21 @@
+{% block title %}
+<title>Студенты</title>
+{% endblock title %}
+
+{% block content %}
+<p>{% now "F j Y" %}</p>
+<form action="" method="get">
+    {{ filterset.form.as_p }}
+<input type="submit" value="Найти">
+</form>
+<br>
+{% if students %}
+    {% for student in students %}
+        <p>Номер группы: {{ student.Group_number }}</p>
+        <p>Номер студента: {{ student.Student_ID_number }}</p>
+        <p>ФИО студента: {{ student.Full_name }}</p>
+    {% endfor %}
+{% else %}
+   <h2>Студент не выбран!</h2>
+{% endif %}
+{% endblock content %}
