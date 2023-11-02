@@ -15,6 +15,24 @@
         <p>Номер студента: {{ student.Student_ID_number }}</p>
         <p>ФИО студента: {{ student.Full_name }}</p>
     {% endfor %}
+<br>
+    <table>
+        <tr>
+            <th>Предметы</th>
+            <th>Оценки</th>
+        </tr>
+        {% if subjects %}
+            {% for subject in subjects %}
+            <tr>
+                <td>{{ subject }}</td>
+                <td>5</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <td>Ничего</td>
+            <td>Нет</td>
+        {% endif %}
+    </table>
 {% else %}
    <h2>Студент не выбран!</h2>
 {% endif %}
