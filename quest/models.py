@@ -36,5 +36,11 @@ class Curators(models.Model):
         return f'{self.Full_name}, {self.Group_number}'
 
 
-class Выписка(models.Model):
-    ...
+class Marks(models.Model):
+    ID_mark = models.AutoField(auto_created=True, primary_key=True)
+    Name_subject = models.CharField(max_length=50)
+    Full_name = models.CharField(max_length=50)
+    Mark = models.IntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return f'{self.Mark}'
