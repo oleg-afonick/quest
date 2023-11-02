@@ -4,7 +4,7 @@ from .models import *
 
 class StudentFilter(FilterSet):
     Student = ModelChoiceFilter(
-        field_name='Full_name',
+        field_name='full_name',
         queryset=Student.objects.all(),
         label='ФИО студента',
         empty_label=None

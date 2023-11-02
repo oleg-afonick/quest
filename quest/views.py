@@ -6,7 +6,7 @@ from .filters import *
 
 class StudentList(ListView):
     model = Student
-    ordering = 'Student_ID_number'
+    ordering = 'pk'
     template_name = 'quest/index.html'
     context_object_name = 'students'
     paginate_by = 1

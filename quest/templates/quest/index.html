@@ -1,40 +1,34 @@
 {% block title %}
-<title>Студенты</title>
+    <title>Студенты</title>
 {% endblock title %}
 
 {% block content %}
-<p>{% now "F j Y" %}</p>
-<form action="" method="get">
-    {{ filterset.form.as_p }}
-<input type="submit" value="Найти">
-</form>
-<br>
-{% if students %}
-    {% for student in students %}
-        <p>Номер группы: {{ student.Group_number }}</p>
-        <p>Номер студента: {{ student.Student_ID_number }}</p>
-        <p>ФИО студента: {{ student.Full_name }}</p>
-    {% endfor %}
-<br>
-    <table>
-        <tr>
-            <th>Предметы</th>
-            <th>Оценки</th>
-        </tr>
-        {% if subjects %}
-            {% for subject in subjects %}
-            <tr>
-                <td>{{ subject }}</td>
-                <td>5</td>
-            </tr>
-            {% endfor %}
-        {% else %}
-            <td>Ничего</td>
-            <td>Нет</td>
-        {% endif %}
-    </table>
-{% else %}
-   <h2>Студент не выбран!</h2>
-{% endif %}
+    <p>{% now "F j Y" %}</p>
+    <form action="" method="get">
+        {{ filterset.form.as_p }}
+        <input type="submit" value="Найти">
+    </form>
+    <br>
+    {% if students %}
+        {% for student in students %}
+            <p>Номер группы: {{ student.group_number }}</p>
+            <p>Номер студента: {{ student.pk }}</p>
+            <p>ФИО студента: {{ student.full_name }}</p>
+            <table>
+                <tr>
+                    <th>Предметы</th>
+                    <th>Оценки</th>
+                </tr>
+                {% for sub in student.studentmarks_set.all %}
+                    <tr>
+                        <td>{{ sub.marks.name_subject }}</td>
+                        <td>{{ sub.student_marks|default_if_none:"Оценки нет" }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    {% else %}
+        <h2>Студент не выбран!</h2>
+    {% endif %}
 
 {% endblock content %}
