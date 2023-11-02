@@ -8,6 +8,7 @@ class StudentList(ListView):
     ordering = 'Student_ID_number'
     template_name = 'quest/index.html'
     context_object_name = 'students'
+    paginate_by = 1
 
     def get_queryset(self):
         queryset = super().get_queryset()
